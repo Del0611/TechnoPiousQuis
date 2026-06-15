@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Panduan Belajar TechnoPiousQuiz</title>
+    <title>📚 TechnoPious Learning - Materi Pemrograman Lengkap</title>
     <style>
         :root {
             --bg: #0a0e17;
@@ -12,7 +12,6 @@
             --text: #e8ecf1;
             --text2: #8b9bb4;
             --accent: #4f8cf7;
-            --accent2: #3b6fd4;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -64,11 +63,11 @@
         }
         /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             padding: 24px 20px;
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 260px 1fr;
             gap: 24px;
         }
         /* Sidebar */
@@ -108,7 +107,7 @@
         .sidebar nav a.active {
             border-left: 3px solid var(--accent);
         }
-        /* Main Content */
+        /* Main */
         .main-content {
             min-width: 0;
         }
@@ -130,6 +129,9 @@
             color: var(--accent);
             border-bottom: 2px solid var(--border);
             padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .section h3 {
             font-size: 1.2rem;
@@ -143,7 +145,6 @@
         }
         .section p {
             margin-bottom: 12px;
-            color: var(--text);
         }
         .section ul,
         .section ol {
@@ -167,24 +168,12 @@
             color: #58a6ff;
             position: relative;
         }
-        .code-block .comment {
-            color: #6e7681;
-        }
-        .code-block .keyword {
-            color: #ff7b72;
-        }
-        .code-block .string {
-            color: #a5d6ff;
-        }
-        .code-block .function {
-            color: #d2a8ff;
-        }
-        .code-block .number {
-            color: #79c0ff;
-        }
-        .code-block .tag {
-            color: #7ee787;
-        }
+        .code-block .comment { color: #6e7681; }
+        .code-block .keyword { color: #ff7b72; }
+        .code-block .string { color: #a5d6ff; }
+        .code-block .function { color: #d2a8ff; }
+        .code-block .number { color: #79c0ff; }
+        .code-block .tag { color: #7ee787; }
         .copy-btn {
             position: absolute;
             top: 8px;
@@ -198,51 +187,19 @@
             font-size: 0.75rem;
             transition: all 0.3s;
         }
-        .copy-btn:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
+        .copy-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
         /* Info Box */
         .info-box {
-            background: rgba(79, 140, 247, 0.08);
-            border: 1px solid rgba(79, 140, 247, 0.3);
+            background: rgba(79,140,247,0.08);
+            border: 1px solid rgba(79,140,247,0.3);
             border-radius: var(--radius-sm);
             padding: 14px 18px;
             margin: 12px 0;
             font-size: 0.9rem;
         }
-        .info-box.tip {
-            background: rgba(16, 185, 129, 0.08);
-            border-color: rgba(16, 185, 129, 0.3);
-        }
-        .info-box.warning {
-            background: rgba(245, 158, 11, 0.08);
-            border-color: rgba(245, 158, 11, 0.3);
-        }
-        .info-box strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-        /* Reference Link */
-        .ref-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: var(--surface2);
-            padding: 8px 14px;
-            border-radius: 20px;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin: 4px;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-        .ref-link:hover {
-            border-color: var(--accent);
-            background: rgba(79, 140, 247, 0.1);
-        }
+        .info-box.tip { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.3); }
+        .info-box.warning { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.3); }
+        .info-box strong { display: block; margin-bottom: 4px; }
         /* Table */
         .learn-table {
             width: 100%;
@@ -260,666 +217,713 @@
             background: var(--surface2);
             color: var(--accent);
         }
-        /* Progress */
-        .progress-indicator {
-            display: flex;
+        /* Reference Links */
+        .ref-link {
+            display: inline-flex;
+            align-items: center;
             gap: 6px;
-            flex-wrap: wrap;
-            margin: 8px 0;
-        }
-        .progress-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
             background: var(--surface2);
-            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 4px;
             transition: all 0.3s;
+            border: 1px solid transparent;
         }
-        .progress-dot.done {
-            background: var(--success);
+        .ref-link:hover {
+            border-color: var(--accent);
+            background: rgba(79,140,247,0.1);
         }
+        /* Topic Card */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin: 12px 0;
+        }
+        .topic-card {
+            background: var(--surface2);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .topic-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(79,140,247,0.2);
+        }
+        .topic-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+        .topic-card h4 {
+            color: var(--text);
+            margin: 4px 0;
+        }
+        .topic-card p {
+            color: var(--text2);
+            font-size: 0.85rem;
+        }
+        /* Output Box */
+        .output-box {
+            background: #060b14;
+            border: 1px solid var(--success);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            margin: 12px 0;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--success);
+            font-size: 0.85rem;
+        }
+        /* Badge */
+        .badge-lang {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .badge-python { background: #306998; color: #ffd43b; }
+        .badge-javascript { background: #f7df1e; color: #000; }
+        .badge-html { background: #e34f26; color: #fff; }
+        .badge-c { background: #555; color: #fff; }
+        .badge-cpp { background: #00599c; color: #fff; }
+        .badge-java { background: #b07219; color: #fff; }
+        .badge-php { background: #777bb3; color: #fff; }
         /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+            .container { grid-template-columns: 1fr; padding: 12px; }
             .sidebar {
-                position: static;
-                max-height: none;
-                display: flex;
-                overflow-x: auto;
-                gap: 8px;
-                padding: 12px;
+                position: static; max-height: none; display: flex; overflow-x: auto; gap: 8px; padding: 12px;
             }
-            .sidebar h3 {
-                display: none;
-            }
-            .sidebar nav {
-                display: flex;
-                gap: 4px;
-            }
-            .sidebar nav a {
-                white-space: nowrap;
-                font-size: 0.8rem;
-                padding: 8px 12px;
-            }
-            .section {
-                padding: 16px;
-            }
-            .section h2 {
-                font-size: 1.2rem;
-            }
-            .code-block {
-                font-size: 0.75rem;
-                padding: 12px;
-            }
+            .sidebar h3 { display: none; }
+            .sidebar nav { display: flex; gap: 4px; }
+            .sidebar nav a { white-space: nowrap; font-size: 0.8rem; padding: 8px 12px; }
+            .section { padding: 16px; }
+            .section h2 { font-size: 1.2rem; }
+            .code-block { font-size: 0.75rem; padding: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header class="header">
-        <h1>📚 Panduan Belajar TechnoPiousQuiz</h1>
-        <p>Memahami kode sumber aplikasi ujian pemrograman langkah demi langkah</p>
+        <h1>📚 TechnoPious Learning</h1>
+        <p>Materi Pembelajaran 7 Bahasa Pemrograman Lengkap dengan Contoh & Referensi</p>
     </header>
 
     <div class="container">
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
-            <h3>📑 Daftar Isi</h3>
+            <h3>📑 Pilih Bahasa</h3>
             <nav>
-                <a href="#pendahuluan" class="active" onclick="showSection('pendahuluan')">🚀 Pendahuluan</a>
-                <a href="#struktur-html" onclick="showSection('struktur-html')">🏗️ Struktur HTML</a>
-                <a href="#css-variables" onclick="showSection('css-variables')">🎨 CSS Variables</a>
-                <a href="#css-layout" onclick="showSection('css-layout')">📐 CSS Layout & Grid</a>
-                <a href="#css-animasi" onclick="showSection('css-animasi')">✨ CSS Animasi</a>
-                <a href="#bank-soal" onclick="showSection('bank-soal')">📦 Bank Soal (Data)</a>
-                <a href="#state-management" onclick="showSection('state-management')">🗃️ State Management</a>
-                <a href="#timer-logic" onclick="showSection('timer-logic')">⏱️ Logika Timer</a>
-                <a href="#event-handling" onclick="showSection('event-handling')">🎯 Event Handling</a>
-                <a href="#dom-manipulation" onclick="showSection('dom-manipulation')">🔧 DOM Manipulation</a>
-                <a href="#ekspor-data" onclick="showSection('ekspor-data')">📤 Ekspor Data</a>
-                <a href="#responsive-design" onclick="showSection('responsive-design')">📱 Responsive Design</a>
-                <a href="#best-practices" onclick="showSection('best-practices')">💡 Best Practices</a>
-                <a href="#referensi" onclick="showSection('referensi')">🔗 Referensi Lengkap</a>
+                <a href="#home" class="active" onclick="showSection('home')">🏠 Beranda</a>
+                <a href="#python" onclick="showSection('python')">🐍 Python</a>
+                <a href="#javascript" onclick="showSection('javascript')">💛 JavaScript</a>
+                <a href="#html" onclick="showSection('html')">🟠 HTML</a>
+                <a href="#c" onclick="showSection('c')">⚙️ C</a>
+                <a href="#cpp" onclick="showSection('cpp')">🔵 C++</a>
+                <a href="#java" onclick="showSection('java')">☕ Java</a>
+                <a href="#php" onclick="showSection('php')">🟣 PHP</a>
             </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
 
-            <!-- Pendahuluan -->
-            <section id="pendahuluan" class="section active">
-                <h2>🚀 Pendahuluan</h2>
+            <!-- ==================== HOME ==================== -->
+            <section id="home" class="section active">
+                <h2>🏠 Selamat Datang di TechnoPious Learning</h2>
                 <p>
-                    <strong>TechnoPiousQuiz</strong> adalah aplikasi web untuk menguji kemampuan pemrograman peserta
-                    melalui kuis interaktif. Aplikasi ini dibangun menggunakan <strong>HTML, CSS, dan JavaScript murni</strong>
-                    (Vanilla JS) tanpa framework eksternal.
+                    Platform pembelajaran pemrograman yang menyediakan materi lengkap untuk <strong>7 bahasa pemrograman</strong>.
+                    Setiap materi dilengkapi dengan penjelasan konsep, contoh kode, dan referensi untuk pembelajaran lebih lanjut.
                 </p>
-
-                <h3>Fitur Utama Aplikasi</h3>
-                <table class="learn-table">
-                    <thead>
-                        <tr><th>Fitur</th><th>Deskripsi</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Mode Manual</td><td>Pengawas mencatat jawaban secara manual dengan timer</td></tr>
-                        <tr><td>Mode Tes</td><td>Sesi ujian otomatis dengan soal bergilir</td></tr>
-                        <tr><td>Bank Soal</td><td>1000+ sintaks dari 7 bahasa pemrograman</td></tr>
-                        <tr><td>Timer Ganda</td><td>Timer per soal dan timer sesi keseluruhan</td></tr>
-                        <tr><td>Validasi</td><td>Penilaian benar/salah oleh pengawas</td></tr>
-                        <tr><td>Ekspor</td><td>CSV, Spreadsheet, JSON, Clipboard</td></tr>
-                        <tr><td>Responsive</td><td>Tampilan optimal di desktop dan mobile</td></tr>
-                    </tbody>
-                </table>
-
-                <div class="info-box">
-                    <strong>ℹ️ Konsep Dasar</strong>
-                    Aplikasi ini menggunakan paradigma <em>Single Page Application (SPA)</em> sederhana
-                    di mana semua konten berada dalam satu file HTML dan navigasi antar tab
-                    dilakukan dengan menyembunyikan/menampilkan elemen (tidak ada reload halaman).
+                <h3>Pilih Bahasa Pemrograman:</h3>
+                <div class="topic-grid">
+                    <div class="topic-card" onclick="showSection('python')">
+                        <div class="icon">🐍</div>
+                        <h4>Python</h4>
+                        <p>Bahasa serbaguna, mudah dipelajari, populer untuk AI & Data Science</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('javascript')">
+                        <div class="icon">💛</div>
+                        <h4>JavaScript</h4>
+                        <p>Bahasa web, berjalan di browser, full-stack dengan Node.js</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('html')">
+                        <div class="icon">🟠</div>
+                        <h4>HTML</h4>
+                        <p>Bahasa markup untuk struktur halaman web</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('c')">
+                        <div class="icon">⚙️</div>
+                        <h4>C</h4>
+                        <p>Bahasa prosedural, dasar sistem operasi & embedded</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('cpp')">
+                        <div class="icon">🔵</div>
+                        <h4>C++</h4>
+                        <p>Pengembangan C dengan OOP, untuk game & aplikasi desktop</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('java')">
+                        <div class="icon">☕</div>
+                        <h4>Java</h4>
+                        <p>"Write Once, Run Anywhere" - Android & enterprise</p>
+                    </div>
+                    <div class="topic-card" onclick="showSection('php')">
+                        <div class="icon">🟣</div>
+                        <h4>PHP</h4>
+                        <p>Bahasa server-side untuk web dinamis</p>
+                    </div>
                 </div>
-
-                <h3>Alur Kerja Aplikasi</h3>
-                <ol>
-                    <li>Pengguna mengatur nama peserta melalui modal dialog</li>
-                    <li>Memilih tab: Manual, Tes, atau Hasil</li>
-                    <li>Pada Mode Tes: konfigurasi sesi → mulai tes → soal tampil → peserta menjawab</li>
-                    <li>Setelah sesi selesai, pengawas memvalidasi jawaban di tab Hasil</li>
-                    <li>Data dapat diekspor ke berbagai format</li>
-                </ol>
             </section>
 
-            <!-- Struktur HTML -->
-            <section id="struktur-html" class="section">
-                <h2>🏗️ Struktur HTML</h2>
-                <p>Aplikasi memiliki struktur HTML yang terorganisir dalam beberapa bagian utama:</p>
+            <!-- ==================== PYTHON ==================== -->
+            <section id="python" class="section">
+                <h2>🐍 <span class="badge-lang badge-python">Python</span> - Bahasa Pemrograman Serbaguna</h2>
+                <p>Python adalah bahasa pemrograman tingkat tinggi yang dirancang oleh <strong>Guido van Rossum</strong> pada tahun 1991. Dikenal dengan sintaks yang bersih dan mudah dibaca.</p>
 
-                <h3>Kerangka Dasar</h3>
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Interpreted:</strong> Kode dieksekusi baris per baris</li>
+                    <li><strong>Dynamically Typed:</strong> Tipe data ditentukan saat runtime</li>
+                    <li><strong>Multi-paradigma:</strong> Mendukung OOP, prosedural, dan fungsional</li>
+                    <li><strong>Indentation-based:</strong> Menggunakan indentasi untuk blok kode</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment"># Program Hello World</span><br>
+                    <span class="function">print</span>(<span class="string">"Hello, Dunia!"</span>)<br><br>
+                    <span class="comment"># Variabel dan tipe data</span><br>
+                    nama = <span class="string">"Ahmad"</span> &nbsp;<span class="comment"># string</span><br>
+                    umur = <span class="number">25</span> &nbsp;<span class="comment"># integer</span><br>
+                    tinggi = <span class="number">1.75</span> &nbsp;<span class="comment"># float</span><br>
+                    is_student = <span class="keyword">True</span> &nbsp;<span class="comment"># boolean</span><br><br>
+                    <span class="comment"># Percabangan</span><br>
+                    <span class="keyword">if</span> umur >= <span class="number">18</span>:<br>
+                    &nbsp;&nbsp;<span class="function">print</span>(<span class="string">"Dewasa"</span>)<br>
+                    <span class="keyword">else</span>:<br>
+                    &nbsp;&nbsp;<span class="function">print</span>(<span class="string">"Di bawah umur"</span>)
+                </div>
+
+                <h3>Struktur Data</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment"># List (array dinamis)</span><br>
+                    buah = [<span class="string">"apel"</span>, <span class="string">"jeruk"</span>, <span class="string">"mangga"</span>]<br>
+                    buah.<span class="function">append</span>(<span class="string">"pisang"</span>)<br><br>
+                    <span class="comment"># Dictionary (key-value)</span><br>
+                    siswa = {<span class="string">"nama"</span>: <span class="string">"Budi"</span>, <span class="string">"nilai"</span>: <span class="number">85</span>}<br><br>
+                    <span class="comment"># Set (koleksi unik)</span><br>
+                    angka_unik = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>} &nbsp;<span class="comment"># hasil: {1, 2, 3}</span><br><br>
+                    <span class="comment"># Tuple (immutable)</span><br>
+                    koordinat = (<span class="number">10</span>, <span class="number">20</span>)
+                </div>
+
+                <h3>Fungsi & OOP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment"># Definisi fungsi</span><br>
+                    <span class="keyword">def</span> <span class="function">sapa</span>(nama):<br>
+                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f"Halo, {nama}!"</span><br><br>
+                    <span class="comment"># Class (OOP)</span><br>
+                    <span class="keyword">class</span> <span class="function">Mobil</span>:<br>
+                    &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, merk, tahun):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.merk = merk<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">self</span>.tahun = tahun<br><br>
+                    &nbsp;&nbsp;<span class="keyword">def</span> <span class="function">info</span>(<span class="keyword">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f"{self.merk} ({self.tahun})"</span><br><br>
+                    mobil1 = <span class="function">Mobil</span>(<span class="string">"Toyota"</span>, <span class="number">2023</span>)<br>
+                    <span class="function">print</span>(mobil1.<span class="function">info</span>())
+                </div>
+
+                <div class="info-box tip">
+                    <strong>💡 Tahukah Kamu?</strong>
+                    Python adalah bahasa nomor 1 di dunia untuk AI dan Machine Learning karena ekosistem library-nya yang kaya (TensorFlow, PyTorch, scikit-learn, Pandas, NumPy).
+                </div>
+
+                <h3>🔗 Referensi Belajar Python</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                    <a href="https://docs.python.org/id/3/" target="_blank" rel="noopener" class="ref-link">📖 Dokumentasi Resmi Python (ID)</a>
+                    <a href="https://www.w3schools.com/python/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools Python</a>
+                    <a href="https://belajarpython.com/" target="_blank" rel="noopener" class="ref-link">📖 BelajarPython.com</a>
+                    <a href="https://www.petanikode.com/tutorial/python/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - Python</a>
+                    <a href="https://realpython.com/" target="_blank" rel="noopener" class="ref-link">📖 Real Python (EN)</a>
+                    <a href="https://www.programiz.com/python-programming" target="_blank" rel="noopener" class="ref-link">📖 Programiz Python</a>
+                    <a href="https://www.geeksforgeeks.org/python-programming-language/" target="_blank" rel="noopener" class="ref-link">📖 GeeksforGeeks Python</a>
+                </div>
+            </section>
+
+            <!-- ==================== JAVASCRIPT ==================== -->
+            <section id="javascript" class="section">
+                <h2>💛 <span class="badge-lang badge-javascript">JavaScript</span> - Bahasa Web Interaktif</h2>
+                <p>JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif. Dibuat oleh <strong>Brendan Eich</strong> pada tahun 1995, kini menjadi salah satu bahasa paling populer di dunia.</p>
+
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Client-side & Server-side:</strong> Berjalan di browser dan Node.js</li>
+                    <li><strong>Event-driven:</strong> Merespons aksi pengguna (klik, input, dll)</li>
+                    <li><strong>Prototype-based OOP:</strong> Pewarisan berbasis prototipe</li>
+                    <li><strong>Asynchronous:</strong> Mendukung async/await, Promise, callback</li>
+                    <li><strong>Weakly Typed:</strong> Tipe data fleksibel</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Output ke console</span><br>
+                    <span class="function">console.log</span>(<span class="string">"Hello, Dunia!"</span>);<br><br>
+                    <span class="comment">// Variabel (3 cara deklarasi)</span><br>
+                    <span class="keyword">let</span> nama = <span class="string">"Ahmad"</span>; &nbsp;<span class="comment">// bisa diubah</span><br>
+                    <span class="keyword">const</span> umur = <span class="number">25</span>; &nbsp;<span class="comment">// tidak bisa diubah</span><br>
+                    <span class="keyword">var</span> tinggi = <span class="number">1.75</span>; &nbsp;<span class="comment">// cara lama (hindari)</span><br><br>
+                    <span class="comment">// Arrow function (ES6+)</span><br>
+                    <span class="keyword">const</span> <span class="function">sapa</span> = (nama) => <span class="string">`Halo, ${nama}!`</span>;<br><br>
+                    <span class="comment">// Template literal</span><br>
+                    <span class="function">console.log</span>(<span class="string">`Nama: ${nama}, Umur: ${umur}`</span>);
+                </div>
+
+                <h3>Manipulasi DOM</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Mengakses elemen HTML</span><br>
+                    <span class="keyword">const</span> judul = document.<span class="function">getElementById</span>(<span class="string">'judul'</span>);<br>
+                    <span class="keyword">const</span> tombol = document.<span class="function">querySelector</span>(<span class="string">'.btn'</span>);<br><br>
+                    <span class="comment">// Mengubah konten</span><br>
+                    judul.<span class="function">textContent</span> = <span class="string">'Judul Baru'</span>;<br><br>
+                    <span class="comment">// Event listener</span><br>
+                    tombol.<span class="function">addEventListener</span>(<span class="string">'click'</span>, () => {<br>
+                    &nbsp;&nbsp;<span class="function">alert</span>(<span class="string">'Tombol diklik!'</span>);<br>
+                    });
+                </div>
+
+                <h3>Asynchronous JavaScript</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Promise</span><br>
+                    <span class="keyword">const</span> <span class="function">fetchData</span> = () => {<br>
+                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="keyword">new</span> <span class="function">Promise</span>((resolve, reject) => {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">setTimeout</span>(() => <span class="function">resolve</span>(<span class="string">'Data berhasil diambil'</span>), <span class="number">1000</span>);<br>
+                    &nbsp;&nbsp;});<br>
+                    };<br><br>
+                    <span class="comment">// Async/Await</span><br>
+                    <span class="keyword">async</span> <span class="keyword">function</span> <span class="function">getData</span>() {<br>
+                    &nbsp;&nbsp;<span class="keyword">const</span> result = <span class="keyword">await</span> <span class="function">fetchData</span>();<br>
+                    &nbsp;&nbsp;<span class="function">console.log</span>(result);<br>
+                    }
+                </div>
+
+                <div class="info-box tip">
+                    <strong>💡 Tahukah Kamu?</strong>
+                    JavaScript adalah satu-satunya bahasa yang berjalan secara native di browser. Dengan Node.js, JavaScript kini bisa digunakan untuk backend, desktop, mobile, bahkan IoT!
+                </div>
+
+                <h3>🔗 Referensi Belajar JavaScript</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                    <a href="https://developer.mozilla.org/id/docs/Web/JavaScript" target="_blank" rel="noopener" class="ref-link">📖 MDN JavaScript (ID)</a>
+                    <a href="https://javascript.info/" target="_blank" rel="noopener" class="ref-link">📖 JavaScript.info (ID)</a>
+                    <a href="https://www.w3schools.com/js/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools JavaScript</a>
+                    <a href="https://www.petanikode.com/tutorial/javascript/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - JavaScript</a>
+                    <a href="https://id.javascript.info/" target="_blank" rel="noopener" class="ref-link">📖 Tutorial JavaScript Modern (ID)</a>
+                    <a href="https://www.programiz.com/javascript" target="_blank" rel="noopener" class="ref-link">📖 Programiz JavaScript</a>
+                    <a href="https://eloquentjavascript.net/" target="_blank" rel="noopener" class="ref-link">📖 Eloquent JavaScript (EN)</a>
+                </div>
+            </section>
+
+            <!-- ==================== HTML ==================== -->
+            <section id="html" class="section">
+                <h2>🟠 <span class="badge-lang badge-html">HTML</span> - HyperText Markup Language</h2>
+                <p>HTML adalah bahasa markup standar untuk membuat struktur halaman web. HTML bukan bahasa pemrograman, melainkan bahasa markup yang menggunakan tag untuk mendefinisikan elemen halaman.</p>
+
+                <h3>Struktur Dasar HTML</h3>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">Salin</button>
                     <span class="tag">&lt;!DOCTYPE html&gt;</span><br>
                     <span class="tag">&lt;html</span> <span class="string">lang="id"</span><span class="tag">&gt;</span><br>
                     <span class="tag">&lt;head&gt;</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Meta tags, title, dan CSS styles</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="string">charset="UTF-8"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;title&gt;</span>Judul Halaman<span class="tag">&lt;/title&gt;</span><br>
                     <span class="tag">&lt;/head&gt;</span><br>
                     <span class="tag">&lt;body&gt;</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Header dengan logo dan jam</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Container utama</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Tab navigasi</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Tiga tab konten: manual, test, results</span><br>
-                    &nbsp;&nbsp;<span class="comment">// Modal dialog</span><br>
-                    &nbsp;&nbsp;<span class="comment">// JavaScript di akhir body</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Heading 1<span class="tag">&lt;/h1&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Paragraf teks.<span class="tag">&lt;/p&gt;</span><br>
                     <span class="tag">&lt;/body&gt;</span><br>
                     <span class="tag">&lt;/html&gt;</span>
                 </div>
 
-                <h3>Komponen Utama HTML</h3>
-                <ul>
-                    <li><strong>Header</strong>: Logo, badge peserta, jam realtime</li>
-                    <li><strong>Quick Stats</strong>: 4 kartu statistik (total soal, benar, akurasi, rata-rata waktu)</li>
-                    <li><strong>Tab Navigation</strong>: 3 tombol tab (Manual, Tes, Hasil)</li>
-                    <li><strong>Tab Manual</strong>: Timer + input jawaban + tabel hasil</li>
-                    <li><strong>Tab Tes</strong>: Konfigurasi + area tes + control bar</li>
-                    <li><strong>Tab Hasil</strong>: Grafik + log jawaban + tombol ekspor</li>
-                    <li><strong>Modal</strong>: Dialog untuk edit nama peserta</li>
-                    <li><strong>Overlay Pause</strong>: Tampilan saat tes dijeda</li>
-                </ul>
-
-                <div class="info-box tip">
-                    <strong>💡 Tips</strong>
-                    Perhatikan penggunaan atribut <code>id</code> pada setiap elemen penting.
-                    ID ini digunakan JavaScript untuk mengakses dan memanipulasi elemen
-                    menggunakan <code>document.getElementById()</code>.
-                </div>
-            </section>
-
-            <!-- CSS Variables -->
-            <section id="css-variables" class="section">
-                <h2>🎨 CSS Variables (Custom Properties)</h2>
-                <p>
-                    Aplikasi menggunakan CSS Variables (didefinisikan di <code>:root</code>) untuk
-                    mengelola tema gelap secara konsisten. Ini memudahkan perubahan warna di seluruh aplikasi.
-                </p>
-
-                <h3>Definisi Variabel</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">:root</span> {<br>
-                    &nbsp;&nbsp;<span class="comment">/* Warna latar */</span><br>
-                    &nbsp;&nbsp;<span class="string">--bg</span>: <span class="string">#060b14</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--surface</span>: <span class="string">#0d1525</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--surface2</span>: <span class="string">#131d33</span>;<br><br>
-                    &nbsp;&nbsp;<span class="comment">/* Warna teks */</span><br>
-                    &nbsp;&nbsp;<span class="string">--text</span>: <span class="string">#e8ecf1</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--text2</span>: <span class="string">#8899b4</span>;<br><br>
-                    &nbsp;&nbsp;<span class="comment">/* Warna aksen */</span><br>
-                    &nbsp;&nbsp;<span class="string">--accent</span>: <span class="string">#4f8cf7</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--success</span>: <span class="string">#10b981</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--danger</span>: <span class="string">#ef4444</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--warning</span>: <span class="string">#f59e0b</span>;<br>
-                    &nbsp;&nbsp;<span class="string">--purple</span>: <span class="string">#8b5cf6</span>;<br>
-                    }
-                </div>
-
-                <h3>Cara Penggunaan Variabel</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">.card</span> {<br>
-                    &nbsp;&nbsp;<span class="string">background</span>: <span class="keyword">var</span>(<span class="string">--surface</span>);<br>
-                    &nbsp;&nbsp;<span class="string">color</span>: <span class="keyword">var</span>(<span class="string">--text</span>);<br>
-                    &nbsp;&nbsp;<span class="string">border</span>: <span class="number">1px</span> solid <span class="keyword">var</span>(<span class="string">--border</span>);<br>
-                    }
-                </div>
-
-                <div class="info-box">
-                    <strong>ℹ️ Keuntungan CSS Variables</strong>
-                    <ul>
-                        <li>Perubahan warna cukup di satu tempat</li>
-                        <li>Mendukung tema gelap/terang dengan mudah</li>
-                        <li>Nilai dapat diubah via JavaScript</li>
-                        <li>Didukung semua browser modern (96%+)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- CSS Layout -->
-            <section id="css-layout" class="section">
-                <h2>📐 CSS Layout & Grid System</h2>
-                <p>Aplikasi menggunakan <strong>CSS Grid</strong> dan <strong>Flexbox</strong> untuk tata letak.</p>
-
-                <h3>Grid System Kustom</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">.grid-2</span> {<br>
-                    &nbsp;&nbsp;<span class="string">display</span>: grid;<br>
-                    &nbsp;&nbsp;<span class="string">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">2</span>, <span class="number">1fr</span>);<br>
-                    &nbsp;&nbsp;<span class="string">gap</span>: <span class="number">16px</span>;<br>
-                    }<br><br>
-                    <span class="keyword">.grid-3</span> {<br>
-                    &nbsp;&nbsp;<span class="string">display</span>: grid;<br>
-                    &nbsp;&nbsp;<span class="string">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">3</span>, <span class="number">1fr</span>);<br>
-                    &nbsp;&nbsp;<span class="string">gap</span>: <span class="number">14px</span>;<br>
-                    }<br><br>
-                    <span class="keyword">.grid-4</span> {<br>
-                    &nbsp;&nbsp;<span class="string">display</span>: grid;<br>
-                    &nbsp;&nbsp;<span class="string">grid-template-columns</span>: <span class="keyword">repeat</span>(<span class="number">4</span>, <span class="number">1fr</span>);<br>
-                    &nbsp;&nbsp;<span class="string">gap</span>: <span class="number">10px</span>;<br>
-                    }
-                </div>
-
-                <h3>Flexbox untuk Komponen</h3>
-                <p>Flexbox digunakan untuk:</p>
-                <ul>
-                    <li><strong>Header</strong>: <code>display: flex; justify-content: space-between;</code></li>
-                    <li><strong>Tab navigasi</strong>: <code>display: flex; gap: 6px;</code></li>
-                    <li><strong>Test controls bar</strong>: <code>display: flex; gap: 8px;</code></li>
-                    <li><strong>Stat cards</strong>: <code>display: flex; align-items: center;</code></li>
-                </ul>
-
-                <h3>Sticky Positioning</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">.header</span> {<br>
-                    &nbsp;&nbsp;<span class="string">position</span>: sticky;<br>
-                    &nbsp;&nbsp;<span class="string">top</span>: <span class="number">0</span>;<br>
-                    &nbsp;&nbsp;<span class="string">z-index</span>: <span class="number">100</span>;<br>
-                    }<br><br>
-                    <span class="keyword">.test-controls-bar</span> {<br>
-                    &nbsp;&nbsp;<span class="string">position</span>: sticky;<br>
-                    &nbsp;&nbsp;<span class="string">bottom</span>: <span class="number">16px</span>;<br>
-                    &nbsp;&nbsp;<span class="string">z-index</span>: <span class="number">50</span>;<br>
-                    }
-                </div>
-                <p>Header sticky di atas, control bar sticky di bawah saat tes aktif.</p>
-            </section>
-
-            <!-- CSS Animasi -->
-            <section id="css-animasi" class="section">
-                <h2>✨ CSS Animasi & Transisi</h2>
-
-                <h3>Keyframe Animations</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="comment">/* Animasi glow pada logo */</span><br>
-                    <span class="keyword">@keyframes</span> logoGlow {<br>
-                    &nbsp;&nbsp;<span class="number">0%</span>, <span class="number">100%</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">filter</span>: <span class="string">drop-shadow(0 0 15px rgba(79,140,247,0.4))</span>;<br>
-                    &nbsp;&nbsp;}<br>
-                    &nbsp;&nbsp;<span class="number">50%</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">filter</span>: <span class="string">drop-shadow(0 0 28px rgba(139,92,246,0.6))</span>;<br>
-                    &nbsp;&nbsp;}<br>
-                    }<br><br>
-                    <span class="comment">/* Animasi teks bergerak */</span><br>
-                    <span class="keyword">@keyframes</span> textShine {<br>
-                    &nbsp;&nbsp;<span class="string">to</span> { <span class="string">background-position</span>: <span class="number">200%</span> center; }<br>
-                    }
-                </div>
-
-                <h3>Transisi Halus</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="comment">/* Variabel transisi global */</span><br>
-                    <span class="string">--transition</span>: <span class="string">all 0.3s cubic-bezier(0.4, 0, 0.2, 1)</span>;<br><br>
-                    <span class="comment">/* Contoh penggunaan */</span><br>
-                    <span class="keyword">button</span> {<br>
-                    &nbsp;&nbsp;<span class="string">transition</span>: <span class="keyword">var</span>(<span class="string">--transition</span>);<br>
-                    }<br>
-                    <span class="keyword">button</span>:<span class="function">hover</span> {<br>
-                    &nbsp;&nbsp;<span class="string">transform</span>: <span class="string">translateY(-2px)</span>;<br>
-                    }
-                </div>
-
-                <div class="info-box tip">
-                    <strong>💡 Tips Performa</strong>
-                    Gunakan <code>transform</code> dan <code>opacity</code> untuk animasi
-                    karena properti ini di-handle oleh GPU dan tidak menyebabkan layout repaint.
-                </div>
-            </section>
-
-            <!-- Bank Soal -->
-            <section id="bank-soal" class="section">
-                <h2>📦 Bank Soal (Struktur Data)</h2>
-                <p>Bank soal adalah inti dari aplikasi. Data disimpan dalam objek JavaScript.</p>
-
-                <h3>Struktur Data</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">const</span> <span class="function">languageKeywords</span> = {<br>
-                    &nbsp;&nbsp;<span class="string">Python</span>: [<span class="string">"def"</span>, <span class="string">"class"</span>,
-                    <span class="string">"lambda"</span>, ...],<br>
-                    &nbsp;&nbsp;<span class="string">JavaScript</span>: [<span class="string">"function"</span>,
-                    <span class="string">"const"</span>, <span class="string">"let"</span>, ...],<br>
-                    &nbsp;&nbsp;<span class="string">HTML</span>: [<span class="string">"&lt;div&gt;"</span>,
-                    <span class="string">"&lt;span&gt;"</span>, ...],<br>
-                    &nbsp;&nbsp;<span class="comment">// ... bahasa lainnya</span><br>
-                    };
-                </div>
-
-                <h3>Generate 1000 Soal</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">function</span> <span class="function">generateFullBank</span>() {<br>
-                    &nbsp;&nbsp;fullSyntaxBank = [];<br>
-                    &nbsp;&nbsp;<span class="keyword">for</span> (<span class="keyword">const</span> [lang, keywords]
-                    <span class="keyword">of</span> <span class="function">Object.entries</span>(languageKeywords)) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;keywords.<span class="function">forEach</span>(kw => {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Tentukan tingkat kesulitan</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">let</span> diff = <span class="string">'basic'</span>;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// ... logika penentuan difficulty</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fullSyntaxBank.<span class="function">push</span>({ lang, keyword: kw,
-                    difficulty: diff });<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;});<br>
-                    &nbsp;&nbsp;}<br>
-                    &nbsp;&nbsp;<span class="comment">// Duplikasi hingga 1000 item</span><br>
-                    &nbsp;&nbsp;<span class="keyword">while</span> (fullSyntaxBank.length < <span class="number">1000</span>) { ... }<br>
-                    }
-                </div>
-
-                <div class="info-box">
-                    <strong>ℹ️ Setiap item soal memiliki struktur:</strong>
-                    <code>{ lang: "Python", keyword: "def", difficulty: "basic" }</code>
-                </div>
-            </section>
-
-            <!-- State Management -->
-            <section id="state-management" class="section">
-                <h2>🗃️ State Management (Variabel Global)</h2>
-                <p>Aplikasi menggunakan variabel global untuk menyimpan state (keadaan) aplikasi.</p>
-
-                <h3>Daftar State Utama</h3>
+                <h3>Elemen Penting HTML</h3>
                 <table class="learn-table">
                     <thead>
-                        <tr><th>Variabel</th><th>Tipe</th><th>Fungsi</th></tr>
+                        <tr><th>Tag</th><th>Fungsi</th><th>Contoh</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td><code>participantName</code></td><td>string</td><td>Nama peserta ujian</td></tr>
-                        <tr><td><code>testSessionActive</code></td><td>boolean</td><td>Status sesi tes</td></tr>
-                        <tr><td><code>testPaused</code></td><td>boolean</td><td>Status pause</td></tr>
-                        <tr><td><code>testQuestions</code></td><td>array</td><td>Daftar soal sesi ini</td></tr>
-                        <tr><td><code>testCurrentIndex</code></td><td>number</td><td>Indeks soal saat ini</td></tr>
-                        <tr><td><code>testAnswers</code></td><td>array</td><td>Jawaban yang sudah dikumpulkan</td></tr>
-                        <tr><td><code>testPerSyntaxRemaining</code></td><td>number</td><td>Sisa waktu per soal (detik)</td></tr>
-                        <tr><td><code>testSessionRemaining</code></td><td>number</td><td>Sisa waktu sesi (detik)</td></tr>
+                        <tr><td><code>&lt;div&gt;</code></td><td>Kontainer umum (block)</td><td><code>&lt;div&gt;...&lt;/div&gt;</code></td></tr>
+                        <tr><td><code>&lt;span&gt;</code></td><td>Kontainer inline</td><td><code>&lt;span&gt;teks&lt;/span&gt;</code></td></tr>
+                        <tr><td><code>&lt;a&gt;</code></td><td>Hyperlink</td><td><code>&lt;a href="url"&gt;Klik&lt;/a&gt;</code></td></tr>
+                        <tr><td><code>&lt;img&gt;</code></td><td>Gambar</td><td><code>&lt;img src="foto.jpg" alt="Deskripsi"&gt;</code></td></tr>
+                        <tr><td><code>&lt;form&gt;</code></td><td>Formulir input</td><td><code>&lt;form&gt;&lt;input&gt;&lt;/form&gt;</code></td></tr>
+                        <tr><td><code>&lt;table&gt;</code></td><td>Tabel data</td><td><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></td></tr>
+                        <tr><td><code>&lt;ul&gt;/&lt;ol&gt;</code></td><td>List (unordered/ordered)</td><td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
                     </tbody>
                 </table>
 
-                <div class="info-box warning">
-                    <strong>⚠️ Catatan Penting</strong>
-                    State disimpan di memori browser. Jika halaman di-refresh, semua data akan hilang.
-                    Untuk production, pertimbangkan menggunakan <code>localStorage</code> atau database.
-                </div>
-            </section>
-
-            <!-- Timer Logic -->
-            <section id="timer-logic" class="section">
-                <h2>⏱️ Logika Timer</h2>
-                <p>Timer adalah fitur paling kritis. Aplikasi menggunakan <code>setInterval</code> untuk menghitung mundur.</p>
-
-                <h3>Dual Timer System</h3>
+                <h3>Formulir Input</h3>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">function</span> <span class="function">startTestTimers</span>() {<br>
-                    &nbsp;&nbsp;<span class="comment">// Timer per soal (setiap detik)</span><br>
-                    &nbsp;&nbsp;testPerSyntaxTimer = <span class="function">setInterval</span>(() => {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (testPaused || !testSessionActive)
-                    <span class="keyword">return</span>;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;testPerSyntaxRemaining--;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">updateTestTimerDisplay</span>();<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (testPerSyntaxRemaining <=
-                        <span class="number">0</span>) {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">submitCurrentAnswer</span>(<span
-                            class="keyword">true</span>);<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">nextSyntax</span>();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                        &nbsp;&nbsp;}, <span class="number">1000</span>);<br><br>
-                        &nbsp;&nbsp;<span class="comment">// Timer sesi (setiap detik)</span><br>
-                        &nbsp;&nbsp;testSessionTimer = <span class="function">setInterval</span>(() => {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (testPaused || !testSessionActive)
-                        <span class="keyword">return</span>;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;testSessionRemaining--;<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">updateTestSessionTimerDisplay</span>();<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (testSessionRemaining <=
-                            <span class="number">0</span>) {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">endTestSession</span>(<span
-                                class="string">'timeout'</span>);<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                            &nbsp;&nbsp;}, <span class="number">1000</span>);<br>
-                            }
+                    <span class="tag">&lt;form</span> <span class="string">action="/submit" method="POST"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="string">for="nama"</span><span class="tag">&gt;</span>Nama:<span class="tag">&lt;/label&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="string">type="text" id="nama" name="nama" placeholder="Masukkan nama"</span><span class="tag">&gt;</span><br><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;label</span> <span class="string">for="email"</span><span class="tag">&gt;</span>Email:<span class="tag">&lt;/label&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="string">type="email" id="email" required</span><span class="tag">&gt;</span><br><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="string">type="submit"</span><span class="tag">&gt;</span>Kirim<span class="tag">&lt;/button&gt;</span><br>
+                    <span class="tag">&lt;/form&gt;</span>
                 </div>
 
-                <h3>Menghentikan Timer</h3>
+                <h3>Semantic HTML5</h3>
                 <div class="code-block">
                     <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="comment">// Saat pause atau sesi berakhir</span><br>
-                    <span class="function">clearInterval</span>(testPerSyntaxTimer);<br>
-                    <span class="function">clearInterval</span>(testSessionTimer);<br>
-                    testPerSyntaxTimer = <span class="keyword">null</span>;<br>
-                    testSessionTimer = <span class="keyword">null</span>;
-                </div>
-
-                <div class="info-box warning">
-                    <strong>⚠️ Penting!</strong>
-                    Selalu bersihkan interval dengan <code>clearInterval()</code> untuk mencegah
-                    memory leak dan perilaku tak terduga.
-                </div>
-            </section>
-
-            <!-- Event Handling -->
-            <section id="event-handling" class="section">
-                <h2>🎯 Event Handling</h2>
-                <p>Aplikasi menangani berbagai event untuk interaktivitas.</p>
-
-                <h3>Keyboard Events</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="comment">// Enter key untuk submit jawaban</span><br>
-                    document.<span class="function">addEventListener</span>(<span class="string">'keydown'</span>,
-                    <span class="keyword">function</span>(e) {<br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (e.key === <span class="string">'Enter'</span> &&
-                    testSessionActive && !testPaused &&<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.activeElement ===
-                    document.<span class="function">getElementById</span>(<span class="string">'testAnswerInput'</span>)) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;e.<span class="function">preventDefault</span>();<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">submitCurrentAnswer</span>(<span class="keyword">false</span>);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">nextSyntax</span>();<br>
-                    &nbsp;&nbsp;}<br>
-                    });<br><br>
-                    <span class="comment">// Spasi untuk pause/resume</span><br>
-                    <span class="keyword">if</span> (e.key === <span class="string">' '</span> && testSessionActive) {<br>
-                    &nbsp;&nbsp;<span class="keyword">if</span> (testPaused) <span class="function">resumeTest</span>();<br>
-                    &nbsp;&nbsp;<span class="keyword">else</span> <span class="function">pauseTest</span>();<br>
-                    }
-                </div>
-
-                <h3>Click Events</h3>
-                <p>Tombol-tombol menggunakan atribut <code>onclick</code> langsung di HTML:</p>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="tag">&lt;button</span> <span class="string">onclick="startTestSession()"</span><span class="tag">&gt;</span>Mulai Tes<span class="tag">&lt;/button&gt;</span><br>
-                    <span class="tag">&lt;button</span> <span class="string">onclick="pauseTest()"</span><span class="tag">&gt;</span>Pause<span class="tag">&lt;/button&gt;</span>
-                </div>
-            </section>
-
-            <!-- DOM Manipulation -->
-            <section id="dom-manipulation" class="section">
-                <h2>🔧 DOM Manipulation</h2>
-                <p>DOM (Document Object Model) dimanipulasi untuk memperbarui tampilan.</p>
-
-                <h3>Teknik yang Digunakan</h3>
-                <table class="learn-table">
-                    <thead>
-                        <tr><th>Metode</th><th>Contoh Penggunaan</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>getElementById</code></td><td>Mengakses elemen: timer, input, tabel</td></tr>
-                        <tr><td><code>querySelectorAll</code></td><td>Memilih checkbox filter bahasa</td></tr>
-                        <tr><td><code>classList.add/remove</code></td><td>Toggle class 'hidden', 'active', 'warning'</td></tr>
-                        <tr><td><code>textContent</code></td><td>Update teks timer, badge, label</td></tr>
-                        <tr><td><code>innerHTML</code></td><td>Render tabel jawaban secara dinamis</td></tr>
-                        <tr><td><code>style.property</code></td><td>Update progress bar width</td></tr>
-                    </tbody>
-                </table>
-
-                <h3>Render Tabel Dinamis</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">function</span> <span class="function">renderManualTable</span>() {<br>
-                    &nbsp;&nbsp;<span class="keyword">const</span> tbody = document.<span class="function">getElementById</span>(<span
-                        class="string">'manualTableBody'</span>);<br>
-                    &nbsp;&nbsp;tbody.<span class="string">innerHTML</span> = manualEntries.<span class="function">map</span>(e
-                    => <span class="string">`&lt;tr&gt;...&lt;/tr&gt;`</span>).<span class="function">join</span>(<span
-                        class="string">''</span>);<br>
-                    }
+                    <span class="tag">&lt;header&gt;</span>...<span class="tag">&lt;/header&gt;</span> &nbsp;<span class="comment">← Header halaman</span><br>
+                    <span class="tag">&lt;nav&gt;</span>...<span class="tag">&lt;/nav&gt;</span> &nbsp;<span class="comment">← Navigasi</span><br>
+                    <span class="tag">&lt;main&gt;</span>...<span class="tag">&lt;/main&gt;</span> &nbsp;<span class="comment">← Konten utama</span><br>
+                    <span class="tag">&lt;section&gt;</span>...<span class="tag">&lt;/section&gt;</span> &nbsp;<span class="comment">← Bagian konten</span><br>
+                    <span class="tag">&lt;article&gt;</span>...<span class="tag">&lt;/article&gt;</span> &nbsp;<span class="comment">← Artikel mandiri</span><br>
+                    <span class="tag">&lt;aside&gt;</span>...<span class="tag">&lt;/aside&gt;</span> &nbsp;<span class="comment">← Konten samping</span><br>
+                    <span class="tag">&lt;footer&gt;</span>...<span class="tag">&lt;/footer&gt;</span> &nbsp;<span class="comment">← Footer halaman</span>
                 </div>
 
                 <div class="info-box tip">
-                    <strong>💡 Tips</strong>
-                    Gunakan <code>textContent</code> untuk teks biasa (lebih aman dari XSS).
-                    Gunakan <code>innerHTML</code> hanya saat perlu render HTML, dan pastikan data sudah aman.
-                </div>
-            </section>
-
-            <!-- Ekspor Data -->
-            <section id="ekspor-data" class="section">
-                <h2>📤 Ekspor Data</h2>
-                <p>Aplikasi mendukung 4 format ekspor.</p>
-
-                <h3>Metode Ekspor</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">function</span> <span class="function">exportData</span>(format) {<br>
-                    &nbsp;&nbsp;<span class="keyword">switch</span>(format) {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">'clipboard'</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigator.<span class="string">clipboard</span>.<span
-                        class="function">writeText</span>(text);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span>;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">'csv'</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">'spreadsheet'</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">'json'</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="function">downloadFile</span>(filename, mimeType,
-                    content);<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span>;<br>
-                    &nbsp;&nbsp;}<br>
-                    }
+                    <strong>💡 Tips Penting</strong>
+                    Gunakan semantic HTML untuk meningkatkan SEO dan aksesibilitas. Search engine lebih memahami struktur halaman yang menggunakan tag semantic.
                 </div>
 
-                <h3>Download File</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">function</span> <span class="function">downloadFile</span>(filename, mimeType,
-                    content) {<br>
-                    &nbsp;&nbsp;<span class="keyword">const</span> blob = <span class="keyword">new</span>
-                    <span class="function">Blob</span>([content], { type: mimeType });<br>
-                    &nbsp;&nbsp;<span class="keyword">const</span> url = URL.<span class="function">createObjectURL</span>(blob);<br>
-                    &nbsp;&nbsp;<span class="keyword">const</span> a = document.<span class="function">createElement</span>(<span
-                        class="string">'a'</span>);<br>
-                    &nbsp;&nbsp;a.href = url;<br>
-                    &nbsp;&nbsp;a.download = filename;<br>
-                    &nbsp;&nbsp;a.<span class="function">click</span>();<br>
-                    &nbsp;&nbsp;URL.<span class="function">revokeObjectURL</span>(url);<br>
-                    }
-                </div>
-            </section>
-
-            <!-- Responsive Design -->
-            <section id="responsive-design" class="section">
-                <h2>📱 Responsive Design</h2>
-                <p>Aplikasi menggunakan <strong>Media Queries</strong> untuk menyesuaikan tampilan di berbagai ukuran layar.</p>
-
-                <h3>Breakpoints</h3>
-                <table class="learn-table">
-                    <thead>
-                        <tr><th>Breakpoint</th><th>Target</th><th>Perubahan</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>max-width: 1024px</code></td><td>Tablet</td><td>Grid 3→2 kolom, timer lebih kecil</td></tr>
-                        <tr><td><code>max-width: 768px</code></td><td>Mobile</td><td>Grid 2→1 kolom, font lebih kecil</td></tr>
-                        <tr><td><code>max-width: 400px</code></td><td>HP Kecil</td><td>Header vertikal, tombol compact</td></tr>
-                    </tbody>
-                </table>
-
-                <h3>Contoh Media Query</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="keyword">@media</span> (<span class="string">max-width: 768px</span>) {<br>
-                    &nbsp;&nbsp;<span class="keyword">.grid-2</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">grid-template-columns</span>: <span class="number">1fr</span>;<br>
-                    &nbsp;&nbsp;}<br>
-                    &nbsp;&nbsp;<span class="keyword">.timer-display</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="string">font-size</span>: <span class="number">1.8rem</span>;<br>
-                    &nbsp;&nbsp;}<br>
-                    }
-                </div>
-            </section>
-
-            <!-- Best Practices -->
-            <section id="best-practices" class="section">
-                <h2>💡 Best Practices dalam Kode</h2>
-
-                <h3>1. Single Responsibility</h3>
-                <p>Setiap fungsi memiliki satu tugas spesifik. Contoh: <code>updateTestTimerDisplay()</code> hanya mengupdate tampilan timer, tidak melakukan logika lain.</p>
-
-                <h3>2. Penamaan yang Jelas</h3>
-                <p>Variabel dan fungsi menggunakan nama deskriptif: <code>testPerSyntaxRemaining</code>, <code>submitCurrentAnswer()</code>.</p>
-
-                <h3>3. Komentar Kode</h3>
-                <div class="code-block">
-                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
-                    <span class="comment">// ==================== MODE TES ====================</span><br>
-                    <span class="comment">// Bagian ini menangani semua logika sesi ujian</span>
-                </div>
-
-                <h3>4. Error Prevention</h3>
-                <ul>
-                    <li>Validasi input sebelum memulai tes</li>
-                    <li>Pengecekan <code>testSessionActive</code> sebelum operasi</li>
-                    <li>Try-catch untuk operasi yang mungkin gagal</li>
-                </ul>
-
-                <h3>5. Cleanup</h3>
-                <p>Timer selalu dibersihkan saat komponen tidak lagi digunakan.</p>
-            </section>
-
-            <!-- Referensi -->
-            <section id="referensi" class="section">
-                <h2>🔗 Referensi Lengkap</h2>
-
-                <h3>HTML</h3>
+                <h3>🔗 Referensi Belajar HTML</h3>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
-                    <a href="https://developer.mozilla.org/id/docs/Web/HTML" target="_blank" rel="noopener" class="ref-link">📖 MDN HTML Guide</a>
+                    <a href="https://developer.mozilla.org/id/docs/Web/HTML" target="_blank" rel="noopener" class="ref-link">📖 MDN HTML (ID)</a>
                     <a href="https://www.w3schools.com/html/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools HTML</a>
+                    <a href="https://www.petanikode.com/tutorial/html/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - HTML</a>
                     <a href="https://html.spec.whatwg.org/multipage/" target="_blank" rel="noopener" class="ref-link">📖 HTML Living Standard</a>
+                    <a href="https://www.programiz.com/html" target="_blank" rel="noopener" class="ref-link">📖 Programiz HTML</a>
+                </div>
+            </section>
+
+            <!-- ==================== C ==================== -->
+            <section id="c" class="section">
+                <h2>⚙️ <span class="badge-lang badge-c">C</span> - Bahasa Pemrograman Prosedural</h2>
+                <p>Bahasa C dikembangkan oleh <strong>Dennis Ritchie</strong> pada tahun 1972 di Bell Labs. C adalah fondasi dari banyak bahasa modern dan digunakan untuk sistem operasi, embedded systems, dan aplikasi performa tinggi.</p>
+
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Compiled:</strong> Kode dikompilasi menjadi machine code</li>
+                    <li><strong>Statically Typed:</strong> Tipe data harus dideklarasikan</li>
+                    <li><strong>Manual Memory Management:</strong> Menggunakan malloc/free</li>
+                    <li><strong>Pointer:</strong> Akses langsung ke alamat memori</li>
+                    <li><strong>Prosedural:</strong> Berbasis fungsi</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">#include</span> <span class="string">&lt;stdio.h&gt;</span><br><br>
+                    <span class="keyword">int</span> <span class="function">main</span>() {<br>
+                    &nbsp;&nbsp;<span class="comment">// Output ke console</span><br>
+                    &nbsp;&nbsp;<span class="function">printf</span>(<span class="string">"Hello, Dunia!\n"</span>);<br><br>
+                    &nbsp;&nbsp;<span class="comment">// Variabel dengan tipe data</span><br>
+                    &nbsp;&nbsp;<span class="keyword">int</span> umur = <span class="number">25</span>;<br>
+                    &nbsp;&nbsp;<span class="keyword">float</span> tinggi = <span class="number">1.75</span>;<br>
+                    &nbsp;&nbsp;<span class="keyword">char</span> huruf = <span class="string">'A'</span>;<br><br>
+                    &nbsp;&nbsp;<span class="comment">// Percabangan</span><br>
+                    &nbsp;&nbsp;<span class="keyword">if</span> (umur >= <span class="number">18</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">printf</span>(<span class="string">"Dewasa\n"</span>);<br>
+                    &nbsp;&nbsp;} <span class="keyword">else</span> {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">printf</span>(<span class="string">"Di bawah umur\n"</span>);<br>
+                    &nbsp;&nbsp;}<br><br>
+                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="number">0</span>;<br>
+                    }
                 </div>
 
-                <h3>CSS</h3>
-                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
-                    <a href="https://developer.mozilla.org/id/docs/Web/CSS" target="_blank" rel="noopener" class="ref-link">📖 MDN CSS Guide</a>
-                    <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener" class="ref-link">📖 CSS Grid Guide</a>
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener" class="ref-link">📖 Flexbox Guide</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener" class="ref-link">📖 CSS Variables</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/CSS/CSS_media_queries" target="_blank" rel="noopener" class="ref-link">📖 Media Queries</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/CSS/CSS_animations" target="_blank" rel="noopener" class="ref-link">📖 CSS Animations</a>
-                    <a href="https://animate.style/" target="_blank" rel="noopener" class="ref-link">📖 Animate.css</a>
+                <h3>Pointer dan Array</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Array</span><br>
+                    <span class="keyword">int</span> angka[<span class="number">5</span>] = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};<br><br>
+                    <span class="comment">// Pointer - menyimpan alamat memori</span><br>
+                    <span class="keyword">int</span> x = <span class="number">10</span>;<br>
+                    <span class="keyword">int</span> *ptr = &x; &nbsp;<span class="comment">// ptr menyimpan alamat x</span><br>
+                    <span class="function">printf</span>(<span class="string">"%d"</span>, *ptr); &nbsp;<span class="comment">// dereference: mengambil nilai</span><br><br>
+                    <span class="comment">// Dynamic memory allocation</span><br>
+                    <span class="keyword">int</span> *arr = (<span class="keyword">int</span>*) <span class="function">malloc</span>(<span class="number">5</span> * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));<br>
+                    <span class="function">free</span>(arr); &nbsp;<span class="comment">// selalu bebaskan memori!</span>
                 </div>
 
-                <h3>JavaScript</h3>
-                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
-                    <a href="https://developer.mozilla.org/id/docs/Web/JavaScript" target="_blank" rel="noopener" class="ref-link">📖 MDN JavaScript</a>
-                    <a href="https://javascript.info/" target="_blank" rel="noopener" class="ref-link">📖 JavaScript.info (ID)</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/API/Document_Object_Model" target="_blank" rel="noopener" class="ref-link">📖 DOM API</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/API/setInterval" target="_blank" rel="noopener" class="ref-link">📖 setInterval</a>
-                    <a href="https://developer.mozilla.org/id/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener" class="ref-link">📖 addEventListener</a>
+                <h3>Struct (Struktur Data)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Definisi struct</span><br>
+                    <span class="keyword">struct</span> <span class="function">Mahasiswa</span> {<br>
+                    &nbsp;&nbsp;<span class="keyword">char</span> nama[<span class="number">50</span>];<br>
+                    &nbsp;&nbsp;<span class="keyword">int</span> nim;<br>
+                    &nbsp;&nbsp;<span class="keyword">float</span> ipk;<br>
+                    };<br><br>
+                    <span class="comment">// Penggunaan</span><br>
+                    <span class="keyword">struct</span> <span class="function">Mahasiswa</span> mhs1;<br>
+                    <span class="function">strcpy</span>(mhs1.nama, <span class="string">"Budi"</span>);<br>
+                    mhs1.nim = <span class="number">12345</span>;<br>
+                    mhs1.ipk = <span class="number">3.75</span>;
                 </div>
 
-                <h3>Tools & Utilities</h3>
+                <div class="info-box warning">
+                    <strong>⚠️ Perhatian!</strong>
+                    C tidak memiliki garbage collector. Setiap memori yang dialokasikan dengan <code>malloc()</code> harus dibebaskan dengan <code>free()</code> untuk mencegah memory leak.
+                </div>
+
+                <h3>🔗 Referensi Belajar C</h3>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
-                    <a href="https://caniuse.com/" target="_blank" rel="noopener" class="ref-link">📖 Can I Use</a>
-                    <a href="https://codepen.io/" target="_blank" rel="noopener" class="ref-link">📖 CodePen</a>
-                    <a href="https://validator.w3.org/" target="_blank" rel="noopener" class="ref-link">📖 HTML Validator</a>
-                    <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener" class="ref-link">📖 CSS Validator</a>
-                    <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener" class="ref-link">📖 PageSpeed Insights</a>
+                    <a href="https://www.w3schools.com/c/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools C</a>
+                    <a href="https://www.programiz.com/c-programming" target="_blank" rel="noopener" class="ref-link">📖 Programiz C</a>
+                    <a href="https://www.petanikode.com/tutorial/c/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - C</a>
+                    <a href="https://www.geeksforgeeks.org/c-programming-language/" target="_blank" rel="noopener" class="ref-link">📖 GeeksforGeeks C</a>
+                    <a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener" class="ref-link">📖 C Reference (cppreference)</a>
+                </div>
+            </section>
+
+            <!-- ==================== C++ ==================== -->
+            <section id="cpp" class="section">
+                <h2>🔵 <span class="badge-lang badge-cpp">C++</span> - Pengembangan C dengan OOP</h2>
+                <p>C++ dikembangkan oleh <strong>Bjarne Stroustrup</strong> pada tahun 1985 sebagai pengembangan dari C dengan menambahkan fitur Object-Oriented Programming (OOP).</p>
+
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Multi-paradigma:</strong> OOP, prosedural, generik, fungsional</li>
+                    <li><strong>Compiled:</strong> Performa tinggi</li>
+                    <li><strong>STL:</strong> Standard Template Library yang kaya</li>
+                    <li><strong>RAII:</strong> Resource Acquisition Is Initialization</li>
+                    <li><strong>Smart Pointers:</strong> Manajemen memori otomatis</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">#include</span> <span class="string">&lt;iostream&gt;</span><br>
+                    <span class="keyword">using namespace</span> std;<br><br>
+                    <span class="keyword">int</span> <span class="function">main</span>() {<br>
+                    &nbsp;&nbsp;cout << <span class="string">"Hello, Dunia!"</span> << endl;<br>
+                    &nbsp;&nbsp;<span class="keyword">return</span> <span class="number">0</span>;<br>
+                    }
+                </div>
+
+                <h3>Class & OOP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="keyword">class</span> <span class="function">Mobil</span> {<br>
+                    <span class="keyword">private</span>:<br>
+                    &nbsp;&nbsp;<span class="keyword">string</span> merk;<br>
+                    &nbsp;&nbsp;<span class="keyword">int</span> tahun;<br>
+                    <span class="keyword">public</span>:<br>
+                    &nbsp;&nbsp;<span class="function">Mobil</span>(<span class="keyword">string</span> m, <span class="keyword">int</span> t) : merk(m), tahun(t) {}<br>
+                    &nbsp;&nbsp;<span class="keyword">void</span> <span class="function">info</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;cout << merk << <span class="string">" ("</span> << tahun << <span class="string">")"</span> << endl;<br>
+                    &nbsp;&nbsp;}<br>
+                    };<br><br>
+                    <span class="function">Mobil</span> mobil1(<span class="string">"Toyota"</span>, <span class="number">2023</span>);<br>
+                    mobil1.<span class="function">info</span>();
+                </div>
+
+                <h3>STL (Standard Template Library)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">#include</span> <span class="string">&lt;vector&gt;</span><br>
+                    <span class="tag">#include</span> <span class="string">&lt;map&gt;</span><br>
+                    <span class="tag">#include</span> <span class="string">&lt;algorithm&gt;</span><br><br>
+                    <span class="comment">// Vector (array dinamis)</span><br>
+                    vector<<span class="keyword">int</span>> angka = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>};<br>
+                    angka.<span class="function">push_back</span>(<span class="number">4</span>);<br><br>
+                    <span class="comment">// Map (key-value)</span><br>
+                    map<<span class="keyword">string</span>, <span class="keyword">int</span>> nilai;<br>
+                    nilai[<span class="string">"Budi"</span>] = <span class="number">85</span>;<br><br>
+                    <span class="comment">// Algorithm</span><br>
+                    <span class="function">sort</span>(angka.<span class="function">begin</span>(), angka.<span class="function">end</span>());
+                </div>
+
+                <h3>🔗 Referensi Belajar C++</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                    <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools C++</a>
+                    <a href="https://www.programiz.com/cpp-programming" target="_blank" rel="noopener" class="ref-link">📖 Programiz C++</a>
+                    <a href="https://www.petanikode.com/tutorial/cpp/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - C++</a>
+                    <a href="https://en.cppreference.com/w/" target="_blank" rel="noopener" class="ref-link">📖 C++ Reference</a>
+                    <a href="https://www.learncpp.com/" target="_blank" rel="noopener" class="ref-link">📖 LearnCpp.com</a>
+                </div>
+            </section>
+
+            <!-- ==================== JAVA ==================== -->
+            <section id="java" class="section">
+                <h2>☕ <span class="badge-lang badge-java">Java</span> - Write Once, Run Anywhere</h2>
+                <p>Java dikembangkan oleh <strong>James Gosling</strong> di Sun Microsystems (sekarang Oracle) pada tahun 1995. Slogannya "Write Once, Run Anywhere" karena Java berjalan di Java Virtual Machine (JVM).</p>
+
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Platform Independent:</strong> Berjalan di JVM</li>
+                    <li><strong>Strictly OOP:</strong> Semua kode dalam class</li>
+                    <li><strong>Statically Typed:</strong> Tipe data eksplisit</li>
+                    <li><strong>Garbage Collection:</strong> Manajemen memori otomatis</li>
+                    <li><strong>Multithreading:</strong> Dukungan konkurensi</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="keyword">public class</span> <span class="function">Main</span> {<br>
+                    &nbsp;&nbsp;<span class="keyword">public static void</span> <span class="function">main</span>(String[] args) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;System.out.<span class="function">println</span>(<span class="string">"Hello, Dunia!"</span>);<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Variabel</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">int</span> umur = <span class="number">25</span>;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">double</span> tinggi = <span class="number">1.75</span>;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">String</span> nama = <span class="string">"Ahmad"</span>;<br><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Percabangan</span><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> (umur >= <span class="number">18</span>) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.<span class="function">println</span>(<span class="string">"Dewasa"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;}<br>
+                    }
+                </div>
+
+                <h3>OOP di Java</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="comment">// Class dengan constructor</span><br>
+                    <span class="keyword">public class</span> <span class="function">Mobil</span> {<br>
+                    &nbsp;&nbsp;<span class="keyword">private</span> String merk;<br>
+                    &nbsp;&nbsp;<span class="keyword">private</span> <span class="keyword">int</span> tahun;<br><br>
+                    &nbsp;&nbsp;<span class="keyword">public</span> <span class="function">Mobil</span>(String merk, <span class="keyword">int</span> tahun) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.merk = merk;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">this</span>.tahun = tahun;<br>
+                    &nbsp;&nbsp;}<br><br>
+                    &nbsp;&nbsp;<span class="keyword">public</span> String <span class="function">getInfo</span>() {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> merk + <span class="string">" ("</span> + tahun + <span class="string">")"</span>;<br>
+                    &nbsp;&nbsp;}<br>
+                    }<br><br>
+                    <span class="comment">// Penggunaan</span><br>
+                    <span class="function">Mobil</span> mobil1 = <span class="keyword">new</span> <span class="function">Mobil</span>(<span class="string">"Toyota"</span>, <span class="number">2023</span>);<br>
+                    System.out.<span class="function">println</span>(mobil1.<span class="function">getInfo</span>());
+                </div>
+
+                <h3>ArrayList & Collections</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="keyword">import</span> java.util.ArrayList;<br>
+                    <span class="keyword">import</span> java.util.HashMap;<br><br>
+                    <span class="comment">// ArrayList (array dinamis)</span><br>
+                    ArrayList&lt;String&gt; buah = <span class="keyword">new</span> ArrayList&lt;&gt;();<br>
+                    buah.<span class="function">add</span>(<span class="string">"Apel"</span>);<br>
+                    buah.<span class="function">add</span>(<span class="string">"Jeruk"</span>);<br><br>
+                    <span class="comment">// HashMap (key-value)</span><br>
+                    HashMap&lt;String, Integer&gt; nilai = <span class="keyword">new</span> HashMap&lt;&gt;();<br>
+                    nilai.<span class="function">put</span>(<span class="string">"Budi"</span>, <span class="number">85</span>);
+                </div>
+
+                <h3>🔗 Referensi Belajar Java</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                    <a href="https://www.w3schools.com/java/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools Java</a>
+                    <a href="https://www.programiz.com/java-programming" target="_blank" rel="noopener" class="ref-link">📖 Programiz Java</a>
+                    <a href="https://www.petanikode.com/tutorial/java/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - Java</a>
+                    <a href="https://docs.oracle.com/javase/tutorial/" target="_blank" rel="noopener" class="ref-link">📖 Oracle Java Tutorial</a>
+                    <a href="https://www.geeksforgeeks.org/java/" target="_blank" rel="noopener" class="ref-link">📖 GeeksforGeeks Java</a>
+                </div>
+            </section>
+
+            <!-- ==================== PHP ==================== -->
+            <section id="php" class="section">
+                <h2>🟣 <span class="badge-lang badge-php">PHP</span> - Hypertext Preprocessor</h2>
+                <p>PHP dibuat oleh <strong>Rasmus Lerdorf</strong> pada tahun 1994. PHP adalah bahasa server-side yang dirancang khusus untuk pengembangan web dinamis.</p>
+
+                <h3>Karakteristik Utama</h3>
+                <ul>
+                    <li><strong>Server-side:</strong> Dieksekusi di server, hasil dikirim ke browser</li>
+                    <li><strong>Embedded:</strong> Bisa disisipkan dalam HTML</li>
+                    <li><strong>Weakly Typed:</strong> Tipe data fleksibel</li>
+                    <li><strong>Database Integration:</strong> Built-in support untuk MySQL, PostgreSQL</li>
+                    <li><strong>Session Management:</strong> Cookie, session, form handling</li>
+                </ul>
+
+                <h3>Contoh Program Dasar</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">&lt;?php</span><br>
+                    <span class="comment">// Output</span><br>
+                    <span class="keyword">echo</span> <span class="string">"Hello, Dunia!"</span>;<br><br>
+                    <span class="comment">// Variabel (diawali $)</span><br>
+                    <span class="string">$nama</span> = <span class="string">"Ahmad"</span>;<br>
+                    <span class="string">$umur</span> = <span class="number">25</span>;<br>
+                    <span class="string">$tinggi</span> = <span class="number">1.75</span>;<br><br>
+                    <span class="comment">// Concatenation (.)</span><br>
+                    <span class="keyword">echo</span> <span class="string">"Nama: "</span> . <span class="string">$nama</span> . <span class="string">", Umur: "</span> . <span class="string">$umur</span>;<br><br>
+                    <span class="comment">// Percabangan</span><br>
+                    <span class="keyword">if</span> (<span class="string">$umur</span> >= <span class="number">18</span>) {<br>
+                    &nbsp;&nbsp;<span class="keyword">echo</span> <span class="string">"Dewasa"</span>;<br>
+                    } <span class="keyword">else</span> {<br>
+                    &nbsp;&nbsp;<span class="keyword">echo</span> <span class="string">"Di bawah umur"</span>;<br>
+                    }<br>
+                    <span class="tag">?&gt;</span>
+                </div>
+
+                <h3>Form Handling (GET & POST)</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">&lt;?php</span><br>
+                    <span class="comment">// Menerima data dari form</span><br>
+                    <span class="keyword">if</span> (<span class="string">$_SERVER</span>[<span class="string">"REQUEST_METHOD"</span>] == <span class="string">"POST"</span>) {<br>
+                    &nbsp;&nbsp;<span class="string">$nama</span> = <span class="string">$_POST</span>[<span class="string">"nama"</span>];<br>
+                    &nbsp;&nbsp;<span class="string">$email</span> = <span class="string">$_POST</span>[<span class="string">"email"</span>];<br>
+                    &nbsp;&nbsp;<span class="keyword">echo</span> <span class="string">"Halo, $nama! Email: $email"</span>;<br>
+                    }<br>
+                    <span class="tag">?&gt;</span><br><br>
+                    <span class="tag">&lt;form</span> <span class="string">method="POST"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="string">type="text" name="nama"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;input</span> <span class="string">type="email" name="email"</span><span class="tag">&gt;</span><br>
+                    &nbsp;&nbsp;<span class="tag">&lt;button</span> <span class="string">type="submit"</span><span class="tag">&gt;</span>Kirim<span class="tag">&lt;/button&gt;</span><br>
+                    <span class="tag">&lt;/form&gt;</span>
+                </div>
+
+                <h3>Array di PHP</h3>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                    <span class="tag">&lt;?php</span><br>
+                    <span class="comment">// Indexed array</span><br>
+                    <span class="string">$buah</span> = <span class="function">array</span>(<span class="string">"Apel"</span>, <span class="string">"Jeruk"</span>, <span class="string">"Mangga"</span>);<br>
+                    <span class="comment">// Atau cara singkat:</span><br>
+                    <span class="string">$buah</span> = [<span class="string">"Apel"</span>, <span class="string">"Jeruk"</span>, <span class="string">"Mangga"</span>];<br><br>
+                    <span class="comment">// Associative array (key-value)</span><br>
+                    <span class="string">$siswa</span> = [<br>
+                    &nbsp;&nbsp;<span class="string">"nama"</span> => <span class="string">"Budi"</span>,<br>
+                    &nbsp;&nbsp;<span class="string">"nilai"</span> => <span class="number">85</span>,<br>
+                    &nbsp;&nbsp;<span class="string">"kelas"</span> => <span class="string">"XII-A"</span><br>
+                    ];<br><br>
+                    <span class="comment">// Looping array</span><br>
+                    <span class="keyword">foreach</span> (<span class="string">$buah</span> <span class="keyword">as</span> <span class="string">$item</span>) {<br>
+                    &nbsp;&nbsp;<span class="keyword">echo</span> <span class="string">$item</span> . <span class="string">"&lt;br&gt;"</span>;<br>
+                    }<br>
+                    <span class="tag">?&gt;</span>
+                </div>
+
+                <div class="info-box tip">
+                    <strong>💡 Tahukah Kamu?</strong>
+                    PHP menggerakkan sekitar 77% website di internet, termasuk WordPress, Facebook (awalnya), dan Wikipedia. PHP 8+ membawa fitur modern seperti JIT compiler.
+                </div>
+
+                <h3>🔗 Referensi Belajar PHP</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+                    <a href="https://www.php.net/manual/id/" target="_blank" rel="noopener" class="ref-link">📖 Dokumentasi Resmi PHP (ID)</a>
+                    <a href="https://www.w3schools.com/php/" target="_blank" rel="noopener" class="ref-link">📖 W3Schools PHP</a>
+                    <a href="https://www.petanikode.com/tutorial/php/" target="_blank" rel="noopener" class="ref-link">📖 Petani Kode - PHP</a>
+                    <a href="https://www.programiz.com/php" target="_blank" rel="noopener" class="ref-link">📖 Programiz PHP</a>
+                    <a href="https://www.geeksforgeeks.org/php-tutorial/" target="_blank" rel="noopener" class="ref-link">📖 GeeksforGeeks PHP</a>
+                    <a href="https://phptherightway.com/" target="_blank" rel="noopener" class="ref-link">📖 PHP The Right Way</a>
                 </div>
             </section>
 
@@ -927,43 +931,43 @@
     </div>
 
     <script>
-        // Navigasi sidebar
+        // Navigasi section
         function showSection(sectionId) {
-            // Sembunyikan semua section
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            // Tampilkan section yang dipilih
             const target = document.getElementById(sectionId);
             if (target) {
                 target.classList.add('active');
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-            // Update sidebar active
             document.querySelectorAll('.sidebar nav a').forEach(a => a.classList.remove('active'));
             const link = document.querySelector(`.sidebar nav a[href="#${sectionId}"]`);
-            if (link) link.classList.add('active');
-            // Di mobile, scroll sidebar horizontal
-            if (link && window.innerWidth <= 768) {
-                link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            if (link) {
+                link.classList.add('active');
+                if (window.innerWidth <= 768) {
+                    link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
             }
         }
 
-        // Copy code button
+        // Copy code
         function copyCode(btn) {
             const codeBlock = btn.parentElement;
             const text = codeBlock.innerText.replace('Salin', '').trim();
             navigator.clipboard.writeText(text).then(() => {
-                btn.textContent = 'Tersalin!';
+                btn.textContent = '✅ Tersalin!';
+                setTimeout(() => { btn.textContent = 'Salin'; }, 2000);
+            }).catch(() => {
+                btn.textContent = '❌ Gagal';
                 setTimeout(() => { btn.textContent = 'Salin'; }, 2000);
             });
         }
 
-        // Handle hash di URL
+        // Handle hash URL
         window.addEventListener('hashchange', () => {
             const hash = window.location.hash.replace('#', '');
             if (hash) showSection(hash);
         });
 
-        // Initial load
         const initialHash = window.location.hash.replace('#', '');
         if (initialHash) showSection(initialHash);
     </script>
